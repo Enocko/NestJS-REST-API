@@ -21,78 +21,131 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# NestJS REST API Project
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a REST API built using the [NestJS](https://nestjs.com/) framework. It was created as part of a tutorial to demonstrate how to build a RESTful API with NestJS, Prisma, and PostgreSQL.
 
-## Project setup
+## Features
 
-```bash
-$ npm install
+- **User Management**: CRUD operations for managing users.
+- **Employee Management**: CRUD operations for managing employees.
+- **Database Integration**: Uses PostgreSQL as the database, managed via Prisma ORM.
+- **Custom Logger**: Includes a custom logging service for better debugging and monitoring.
+- **Global Exception Handling**: Implements a global exception filter for consistent error handling.
+
+## Project Structure
+
+```
+nestjs-rest-api/
+├── src/
+│   ├── app.controller.ts          # Main application controller
+│   ├── app.module.ts              # Root module
+│   ├── app.service.ts             # Main application service
+│   ├── main.ts                    # Application entry point
+│   ├── database/                  # Database module and service
+│   ├── employees/                 # Employees module, controller, and service
+│   ├── users/                     # Users module, controller, and service
+│   ├── my-logger/                 # Custom logger module and service
+│   └── all-exceptions.filter.ts   # Global exception filter
+├── prisma/                        # Prisma schema and migrations
+│   ├── schema.prisma              # Prisma schema definition
+│   └── migrations/                # Database migrations
+├── test/                          # End-to-end tests
+├── package.json                   # Project dependencies and scripts
+├── tsconfig.json                  # TypeScript configuration
+├── tsconfig.build.json            # TypeScript build configuration
+├── nest-cli.json                  # NestJS CLI configuration
+├── eslint.config.mjs              # ESLint configuration
+└── .gitignore                     # Files and directories to ignore in Git
 ```
 
-## Compile and run the project
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or later)
+- [PostgreSQL](https://www.postgresql.org/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/nestjs-rest-api.git
+   cd nestjs-rest-api
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up the environment variables:
+   - Create a `.env` file in the root directory.
+   - Add the following variables:
+     ```env
+     DATABASE_URL=postgresql://username:password@localhost:5432/database
+     ```
+     Replace `username`, `password`, `localhost`, `5432`, and `database` with your PostgreSQL credentials.
+
+4. Run database migrations:
+   ```bash
+   npx prisma migrate dev
+   ```
+
+## Running the Application
+
+1. Start the development server:
+
+   ```bash
+   npm run start:dev
+   # or
+   yarn start:dev
+   ```
+
+2. The application will be available at `http://localhost:3000`.
+
+## API Endpoints
+
+### Users
+
+- `GET /users`: Get all users
+- `GET /users/:id`: Get a user by ID
+- `POST /users`: Create a new user
+- `PATCH /users/:id`: Update a user by ID
+- `DELETE /users/:id`: Delete a user by ID
+
+### Employees
+
+- `GET /employees`: Get all employees
+- `GET /employees/:id`: Get an employee by ID
+- `POST /employees`: Create a new employee
+- `PATCH /employees/:id`: Update an employee by ID
+- `DELETE /employees/:id`: Delete an employee by ID
+
+## Testing
+
+Run the end-to-end tests:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run test:e2e
+# or
+yarn test:e2e
 ```
 
-## Run tests
+## Built With
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- [NestJS](https://nestjs.com/) - A progressive Node.js framework for building efficient and scalable server-side applications.
+- [Prisma](https://www.prisma.io/) - A next-generation ORM for Node.js and TypeScript.
+- [PostgreSQL](https://www.postgresql.org/) - A powerful, open-source object-relational database system.
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Special thanks to the [YouTube tutorial](https://www.youtube.com/) that inspired this project.
+- Thanks to the NestJS and Prisma communities for their excellent documentation and support.
